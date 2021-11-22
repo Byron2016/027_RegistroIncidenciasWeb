@@ -1,4 +1,5 @@
-import "../styles/globals.css";
+import "minireset.css";
+//import "@super2016/components_a/styles/globals.css";
 import "@super2016/components_a/styles/tokens.css";
 
 function MyApp({ Component, pageProps }) {
