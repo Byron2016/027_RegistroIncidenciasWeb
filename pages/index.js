@@ -1,36 +1,50 @@
+import { useState } from "react";
 import Head from "next/head";
 
-import {
-  Button,
-  Heading,
-  Picture,
-  Icon,
-  Input,
-  Spacer,
-  ButtonIcon,
-  Dropdown,
-} from "@super2016/components_a";
+import { Heading, Input, Button, Spacer } from "@super2016/components_a";
 
-const OPTIONS = [
-  {
-    text: "4:00 AM",
-    value: 800,
-  },
-  {
-    text: "5:00 AM",
-    value: 1000,
-  },
-  {
-    text: "6:00 PM",
-    value: 1300,
-  },
-  {
-    text: "7:00 PM",
-    value: 1500,
-  },
-];
+// import {
+//   Button,
+//   Heading,
+//   Picture,
+//   Icon,
+//   Input,
+//   Spacer,
+//   ButtonIcon,
+//   Dropdown,
+// } from "@super2016/components_a";
+
+// const OPTIONS = [
+//   {
+//     text: "4:00 AM",
+//     value: 800,
+//   },
+//   {
+//     text: "5:00 AM",
+//     value: 1000,
+//   },
+//   {
+//     text: "6:00 PM",
+//     value: 1300,
+//   },
+//   {
+//     text: "7:00 PM",
+//     value: 1500,
+//   },
+// ];
 
 export default function Home() {
+  const [formValues, setFormValues] = useState({});
+
+  // Función que retorna una función.
+  // Se ejecuta la primera vez recibe un key
+  // se ejecuta segunda vez recibe un evento.
+  const onChange = (key) => (event) => {
+    const { value } = event.target;
+    console.log({ value });
+    setFormValues({ ...formValues, [key]: value });
+  };
+
   return (
     // <div className={styles.container}>
     //   <Head>
@@ -61,6 +75,38 @@ export default function Home() {
     //   <br />
     //   <Spacer.Vertical size={8} isVisible maxHeight={50} />
     // </div>
-    <div></div>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <Heading>Cuentame sobre ti</Heading>
+      <Spacer.Horizontal size="md" />
+      <Input
+        value={formValues.name}
+        onChange={onChange("name")}
+        placeholder="Nombres"
+      />
+      <Spacer.Horizontal size="sm" />
+      <Input
+        value={formValues.lastname}
+        onChange={onChange("lastname")}
+        placeholder="Apellidos"
+      />
+      <Spacer.Horizontal size="sm" />
+      <Input
+        value={formValues.email}
+        onChange={onChange("email")}
+        placeholder="Correo electrónico"
+      />
+      <Spacer.Horizontal size="lg" />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Button type="primary">Completa tu perfil</Button>
+        <Spacer.Horizontal size="md" />
+        <Button type="tertiary">Saltar este paso por ahora</Button>
+      </div>
+    </div>
   );
 }
