@@ -1,7 +1,35 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-//import { Button } from "@super2016/components_a";
+import {
+  Button,
+  Heading,
+  Picture,
+  Icon,
+  Input,
+  Spacer,
+  ButtonIcon,
+  Dropdown,
+} from "@super2016/components_a";
+
+const OPTIONS = [
+  {
+    text: "4:00 AM",
+    value: 800,
+  },
+  {
+    text: "5:00 AM",
+    value: 1000,
+  },
+  {
+    text: "6:00 PM",
+    value: 1300,
+  },
+  {
+    text: "7:00 PM",
+    value: 1500,
+  },
+];
 
 export default function Home() {
   return (
@@ -12,7 +40,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Button>Hola mundo</Button> */}
+      <Button>Hola mundo</Button>
+      <Heading size="md" color="primary">
+        Contenido heading
+      </Heading>
+      <Picture src="https://placeimg.com/400/400/any" width={100} />
+      <Icon />
+      <Icon type="arrowRight" />
+      <Icon type="angleDown" />
+      <Icon type="angleDown" hasBackground={true} />
+      <br />
+      <Input value="ff" placeholder="Nombres" />
+      <br />
+      <ButtonIcon />
+      <br />
+      <Dropdown onChange={undefined} options={OPTIONS} />
+      <br />
+      <Spacer size={8} isVisible />
+      <br />
+      <Spacer.Horizontal size={8} isVisible />
+      <br />
+      <Spacer.Vertical size={8} isVisible maxHeight={50} />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
